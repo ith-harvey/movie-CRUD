@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>Edit movies</h1>
+    <form>
+        <label for="title">Title: </label>
+        <input id='title' type='text' value="{{movie.title}}">
+
+        <label for="director">Director: </label>
+        <input id='director' type='text' value="{{movie.director}}">
+
+        <label for="year">Year: </label>
+        <input id='year' type='text' value="{{movie.year}}">
+
+        <label for="my_rating">My Rating: </label>
+        <input id='my_rating' type='text' value="{{movie.my_rating}}">
+
+        <label for="poster_url">My Rating: </label>
+        <input id='poster_url' type='text' value="{{movie.poster_url}}">
+
+        <input id='submit' type="button" value="submit">
+    </form>
+</div>
+
+<script src="/javascripts/index.js" charset="utf-8"></script>
+<script type="text/javascript">
+$('#submit').on('click', (event) => {
+  event.preventDefault();
+  var routes = window.location.pathname.split('/');
+  var id = routes[routes.length - 1];
+
+  var data = {
+    title: $('#title').val(),
+    director: $('#director').val(),
+    year: $('#year').val(),
+    my_rating: $('#my_rating').val(),
+    poster_url: $('#poster_url').val()
+  };
+
+makeRequest('PUT', '/edit/' + id, data)
+
+})
+
+</script>
