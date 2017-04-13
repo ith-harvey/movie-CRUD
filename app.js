@@ -5,7 +5,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var port = 8000 || process.env.PORT
+var port = process.env.PORT || 8000
 
 var Handlebars= require('hbs')
 
