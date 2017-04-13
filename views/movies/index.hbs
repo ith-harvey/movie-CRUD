@@ -1,22 +1,13 @@
+
+{{> header}}
 <div class="container">
 <h1>Movies Index Page</h1>
 <a href="movies/new">Create a new movie</a>
 {{#each movies}}
-<a href="movies/{{this.id}}">{{this.title}}</a>
-<input type="button" class="deletebtn" data-id="{{this.id}}" value="delete this movie">
+<h3><a href="movies/{{this.id}}">{{this.title}}</a></h3>
 <p>Director: {{this.director}}</p>
 <p>year: {{this.year}}</p>
 <p>my_rating: {{this.my_rating}}</p>
+<form action='/movies/{{this.id}}?_method=DELETE' method='POST'><input type="submit" class="deletebtn" data-id="{{this.id}}" value="delete this movie"></form>
 {{/each}}
 </div>
-
-<script type="text/javascript" src="/javascripts/index.js"></script>
-<script>
-
-$('.deletebtn').on('click', (event) => {
-  console.log('this', event.target)
-  console.log('this.data-id',$(event.target).data());
-  makeRequest('DELETE','/movies/'+ $(event.target).data()['id'],$(event.target).data())
-})
-
-</script>
