@@ -15,10 +15,8 @@ router.get('/:id', function(req, res, next) {
 
 router.put('/:id', function(req, res, next) {
   console.log('we are in the put!!', req.body);
-  db('movies').update(req.body).where('id', req.params.id).then(movie => {
-    res.render('movies/index', {
-      movie
-    });
+  db('movies').update(req.body).where('id', req.params.id).then( () => {
+    res.send('/movies')
   })
 });
 

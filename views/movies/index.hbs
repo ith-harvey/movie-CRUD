@@ -8,6 +8,20 @@
 <p>Director: {{this.director}}</p>
 <p>year: {{this.year}}</p>
 <p>my_rating: {{this.my_rating}}</p>
-<form action='/movies/{{this.id}}?_method=DELETE' method='POST'><input type="submit" class="deletebtn" data-id="{{this.id}}" value="delete this movie"></form>
+<!-- <form action='/movies/{{this.id}}?_method=DELETE' method='POST'><input type="button" class="deletebtn" data-id="{{this.id}}" value="delete this movie"></form> -->
+<input type="button" class="deletebtn" data-id="{{this.id}}" value="delete this movie">
 {{/each}}
 </div>
+
+<script type="text/javascript" src="/javascripts/index.js"></script>
+<script type="text/javascript">
+$('.deletebtn').on('click', (event) => {
+event.preventDefault()
+makeRequest('DELETE', '/movies/' + $(event.target).data('id'))
+})
+
+
+
+
+
+</script>

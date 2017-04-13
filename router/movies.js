@@ -29,7 +29,6 @@ router.post('/', function(req, res, next) {
   }
   console.log('movie obj', movie);
   db('movies').insert(movie).then(movie => {
-
     res.redirect('/movies');
   })
 });
@@ -48,7 +47,7 @@ router.get('/:id', function(req, res, next) {
 router.delete('/:id', function(req, res, next) {
   console.log(req.params.id);
   db('movies').select('*').del().where('id', req.params.id).then( () => {
-    res.redirect('/movies');
+    res.send('/movies');
   })
 });
 
